@@ -1,0 +1,301 @@
+<!doctype html>
+<html amp4email>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="email.contentIds" content="AAAADcMspPg">
+    <meta name="email.required.device.platform" content="web">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <style amp4email-boilerplate>
+        body {
+            visibility: hidden
+        }
+    </style>
+    <style amp-custom>
+        .discussion-header-spacer:first-of-type {
+            display: none;
+        }
+        
+        a {
+            color: #4285f4;
+        }
+        
+        .material-button {
+            background-color: transparent;
+            color: #1a73e8;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .material-button:hover {
+            background-color: #fcfdff;
+            border-radius: 4px;
+        }
+        
+        .material-button:focus {
+            background-color: #f3f8ff;
+            border-radius: 4px;
+        }
+        
+        .material-button:focus.material-button:active {
+            background-color: #f3f8ff;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px 1px rgba(60, 64, 67, .15);
+        }
+        
+        .material-button:disabled {
+            background-color: transparent;
+            color: #3c4043;
+            cursor: initial;
+            margin: 0 12px 0 0;
+            opacity: 0.38;
+            padding: 0 8px;
+        }
+        
+        .submitting-reply {
+            opacity: 0.4;
+        }
+        
+        .resolving-discussion {
+            opacity: 0.4;
+        }
+        
+        .resolving-discussion .resolve-button {
+            visibility: hidden;
+        }
+        
+        .reply-error-text {
+            display: none;
+        }
+        
+        .reply-input {
+            border: none;
+            border-bottom: 1px solid #3c4043;
+        }
+        
+        .reply-input:focus {
+            border-bottom: 2px solid #2277e8;
+        }
+        
+        .submit-error .reply-error-text {
+            display: block;
+        }
+        
+        .post-dark-text {
+            color: #3c4043;
+        }
+        
+        .head-post {
+            margin-top: 18px;
+            word-break: break-word;
+            word-wrap: break-word;
+        }
+        
+        .reply-post {
+            margin-top: 12px;
+            word-break: break-word;
+            word-wrap: break-word;
+        }
+        
+        .post-light-text {
+            color: #777777;
+        }
+        
+        input:disabled {
+            opacity: 0.4;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .discussion-post-quote ul,
+            ol {
+                padding-left: 20px;
+            }
+        }
+        
+        @media screen and (min-width: 601px) {
+            .discussion-open-button {
+                float: right;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="font: 14px Roboto, sans-serif;">
+        <template type="amp-mustache" id="inline-action-post">{{#post}}
+            <div style="margin-top: 12px; word-break: break-word; word-wrap: break-word;">
+                <div class="{{#isHeadPost}}head-post{{/isHeadPost}}{{^isHeadPost}}reply-post{{/isHeadPost}}">
+                    <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%;" class="{{#isNew}}post-dark-text{{/isNew}}{{^isNew}}post-light-text{{/isNew}}">
+                        <tr>
+                            <td style="vertical-align: top; width: 44px;">
+                                <amp-img src="{{authorPhotoUrl}}" height="32" width="32" alt="Photo de profil de l&#39;utilisateur {{authorName}}" style="border-radius: 50%; display: block;"></amp-img>
+                            </td>
+                            <td><strong style="display: inline-block; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: .25px; line-height: 20px; margin: 6px 0 2px 0;">{{authorName}}</strong>{{#isNew}}<span style="background: #1a73e8; border-radius: 8px; color: #fff; display: inline-block; font: 700 12px/16px Roboto, sans-serif; margin-left: 10px; padding: 0 6px;">Nouveau</span>{{/isNew}}
+                                <div style="font-size: 14px; font-family: Roboto, sans-serif; font-weight: 400; line-height: 20px; letter-spacing: .2px;">{{#htmlBody}}
+                                    <div style="margin-top: 6px;" class="notranslate">{{{htmlBody}}}</div>{{/htmlBody}}{{#htmlActionText}}
+                                    <div style="margin-top: 6px;"><i>{{{htmlActionText}}}</i></div>{{/htmlActionText}}{{#showCopiedText}}
+                                    <div style="margin-top: 18px; margin-bottom: 18px; height: 1px; background-color: #eee;"></div>
+                                    <div style="color: #3C4043; font: italic 14px Roboto-Italic, Arial; margin: 18px 0 6px 0; width: 100%;">Les commentaires ci-dessus ont été copiés depuis le document d&#39;origine</div>{{/showCopiedText}}</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>{{/post}}</template>
+        <amp-list id="discussionList" width="auto" height="100" layout="fixed-height" single-item items="." src="https://docs.google.com/document/d/1E-yEXusLm9KoInN2x_-gTrV1hcZYEKM4yjN_uzs1u0s/dynamicmail/comments?commentIds=AAAADcMspPg&amp;fnpi_AAAADcMspPg=AAAADcMspPk&amp;ct_cs=Ev66dWZkTKm8l38ygkMMMw%3D%3D&amp;hl=fr&amp;headRevision=6&amp;revision=2&amp;buildLabel=kix_2019.35-Tue_RC01&amp;clientVersion=1&amp;context_AAAADcMspPg=H4sIAAAAAAAAALMpUCguqcxJtVXKTSxKz8yzMlBSSMksslXKKSlSsrMpLkjMgylISkzOTi_KL81L0U3Oz8kvslJOS0s1NLNQsitJLS6x0QeptbPRL7ADAIJWHVFUAAAA&amp;ts=5d70171f">
+            <div placeholder>
+                <div style="width: 100%; padding: 24px 0 16px 0; background-color: white; text-align: center;">
+                    <div style="display: inline-block; width: 90%; max-width: 700px;min-width: 280px; text-align: left; font-family: Roboto,Arial,Helvetica,sans-serif;">
+                        <div style="border: 1px solid #dadce0; border-radius: 8px;">
+                            <div style="padding: 4.5%;" dir="ltr">
+                                <h2 style="display: block; font-size: 18px; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; font-weight: 400; color: #3C4043; margin: 0;">Patrice De Saint Steban a répondu à un commentaire dans le document suivant</h2>
+                                <a href="https://docs.google.com/a/zenika.com/document/d/1E-yEXusLm9KoInN2x_-gTrV1hcZYEKM4yjN_uzs1u0s/edit?disco=AAAADcMspPg&amp;ts=5d70171f&amp;usp=comment_email_document&amp;usp_dm=true" target="_blank">
+                                    <table role="presentation" cellpadding="0" cellspacing="0" style="border: 2px solid #e8e8e8; border-radius: 15px; display: inline-block; margin-top: 12px; max-width: 100%; padding: 5px 15px;">
+                                        <tr>
+                                            <td>
+                                                <amp-img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x64.png" width="18px" height="18px" style="vertical-align: top;" role="presentation"></amp-img>
+                                            </td>
+                                            <td><span style="color: #6d6f71; display: inline-block; font: 500 14px/18px &quot;Google Sans&quot;, Roboto, sans-serif; margin-left: 6px; vertical-align: middle; word-break: break-word;">test</span></td>
+                                        </tr>
+                                    </table>
+                                </a>
+                                <div style="margin-top: 18px; margin-bottom: 18px; height: 1px; background-color: #eee;"></div>
+                                <div style="overflow: visible; line-height: 20px;">
+                                    <div class="discussion-post-quote" style="padding: 7px 12px; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149); border: 1px solid #d3d3d3; border-radius: 8px; overflow-wrap: break-word; word-break: break-word;"><span class="notranslate" style="font-family: Roboto, sans-serif; font-weight: 400; font-size: 14px; line-height: 20px; color: #3C4043;"><p style="margin:0" dir="ltr"><span style="background-color:#ffe168">test</span></p>
+                                        </span>
+                                    </div>
+                                    <div style="margin-top: 18px; word-break: break-word; word-wrap: break-word;">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%;color: #777777;">
+                                            <tr>
+                                                <td style="vertical-align: top; width: 44px;">
+                                                    <amp-img src="https://lh3.googleusercontent.com/a-/AAuE7mBq9KUKUpTzTCMDDm2nhBltPf9NbMEO2nTRiHAeIFw=s96-k-no" style="border-radius: 50%; display: block;" alt="Photo de profil de l&#39;utilisateur Patrice De Saint Steban" height="32" width="32"></amp-img>
+                                                </td>
+                                                <td><strong style="display: inline-block; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: .25px; line-height: 20px; margin: 6px 0 2px 0;">Patrice De Saint Steban</strong>
+                                                    <div style="font-size: 14px; font-family: Roboto, sans-serif; font-weight: 400; line-height: 20px; letter-spacing: .2px;">
+                                                        <div style="margin-top: 6px;" class="notranslate">toto</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div style="margin-top: 12px; word-break: break-word; word-wrap: break-word;">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%;color: #3C4043;">
+                                            <tr>
+                                                <td style="vertical-align: top; width: 44px;">
+                                                    <amp-img src="https://lh3.googleusercontent.com/a-/AAuE7mAod5wDJNx8xM7V-RaPXXtjeKuErf6Sa_1pLL2Crw=s96-k-no" style="border-radius: 50%; display: block;" alt="Photo de profil de l&#39;utilisateur Patrice De Saint Steban" height="32" width="32"></amp-img>
+                                                </td>
+                                                <td><strong style="display: inline-block; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: .25px; line-height: 20px; margin: 6px 0 2px 0;">Patrice De Saint Steban</strong><span style="background: #1a73e8; border-radius: 8px; color: #fff; display: inline-block; font: 700 12px/16px Roboto, sans-serif; margin-left: 10px; padding: 0 6px;">Nouveau</span>
+                                                    <div style="font-size: 14px; font-family: Roboto, sans-serif; font-weight: 400; line-height: 20px; letter-spacing: .2px;">
+                                                        <div style="margin-top: 6px;" class="notranslate">Titi</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div style="margin: 10px 0 0 42px; overflow: auto; padding: 2px;"><a tabindex="0" role="button" style="float: right;border: none; display: inline-block; font-size: 14px; font-weight: normal; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; line-height: 36px; min-height: 36px; padding: 0 8px; text-align: center; text-decoration: none; letter-spacing: 0.25px;background-color: transparent; color: #1a73e8; cursor: pointer;" target="_blank" href="https://docs.google.com/a/zenika.com/document/d/1E-yEXusLm9KoInN2x_-gTrV1hcZYEKM4yjN_uzs1u0s/edit?disco=AAAADcMspPg&amp;usp=comment_email_discussion&amp;usp_dm=true&amp;ts=5d70171f">Ouvrir</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <table style="padding: 14px 10px 0 10px;" role="presentation" dir="ltr">
+                            <tr>
+                                <td style="width: 100%; font-size:12px; font-family: Roboto,Arial,Helvetica,sans-serif; color:white; line-height: 16px; min-height: 40px; letter-spacing: .3px; vertical-align: middle;">
+                                    <p style="color: #5f6368; font: 12px/16px Roboto, sans-serif; letter-spacing: 0.3px; margin: 0; padding: 0;"><span style="padding-right: 5px;">Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA</span>
+                                        <br>
+                                        <br><span style="padding-right: 5px;">Vous avez reçu ce message, car vous participez à ce fil de discussion.</span><span style="padding-right: 5px;"><a href="https://docs.google.com/document/u/112848297301186120621/docos/notify?id=1E-yEXusLm9KoInN2x_-gTrV1hcZYEKM4yjN_uzs1u0s&amp;title=test" target="_blank" style="color: #4285f4; text-decoration: none;">Sélectionnez les types d&#39;e-mails que Google Docs vous envoie.</a></span><span>Pour répondre à la discussion, répondez à cet e-mail.</span></p>
+                                </td>
+                                <td style="padding-left: 20px; vertical-align: middle;">
+                                    <amp-img src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_tm_black54_color_96x40dp.png" width="96px" height="40px" style="vertical-align: middle; margin-left: 22px;"></amp-img>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <template type="amp-mustache">{{#singleThreadDiscussion}}
+                <div style="width: 100%; padding: 24px 0 16px 0; background-color: white; text-align: center;">
+                    <div style="display: inline-block; width: 90%; max-width: 700px;min-width: 280px; text-align: left; font-family: Roboto,Arial,Helvetica,sans-serif;">
+                        <div style="border: 1px solid #dadce0; border-radius: 8px;">
+                            <div style="padding: 4.5%;" dir="ltr">
+                                <h2 style="display: block; font-size: 18px; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; font-weight: 400; color: #3C4043; margin: 0;">Patrice De Saint Steban a répondu à un commentaire dans le document suivant</h2>
+                                <a href="https://docs.google.com/a/zenika.com/document/d/1E-yEXusLm9KoInN2x_-gTrV1hcZYEKM4yjN_uzs1u0s/edit?disco=AAAADcMspPg&amp;ts=5d70171f&amp;usp=comment_email_document&amp;usp_dm=true" target="_blank">
+                                    <table role="presentation" cellpadding="0" cellspacing="0" style="border: 2px solid #e8e8e8; border-radius: 15px; display: inline-block; margin-top: 12px; max-width: 100%; padding: 5px 15px;">
+                                        <tr>
+                                            <td>
+                                                <amp-img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x64.png" width="18px" height="18px" style="vertical-align: top;" role="presentation"></amp-img>
+                                            </td>
+                                            <td><span style="color: #6d6f71; display: inline-block; font: 500 14px/18px &quot;Google Sans&quot;, Roboto, sans-serif; margin-left: 6px; vertical-align: middle; word-break: break-word;">test</span></td>
+                                        </tr>
+                                    </table>
+                                </a>
+                                <div style="margin-top: 18px; margin-bottom: 18px; height: 1px; background-color: #eee;"></div>
+                                <div id="discussion-{{docoId}}" style="overflow: visible; line-height: 20px;">{{^isDeleted}}{{#htmlQuote}}
+                                    <div class="discussion-post-quote" style="padding: 7px 12px; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149); border: 1px solid #d3d3d3; border-radius: 8px; overflow-wrap: break-word; word-break: break-word;"><span class="notranslate" style="font-family: Roboto, sans-serif; font-weight: 400; font-size: 14px; line-height: 20px; color: #3C4043;">{{{htmlQuote}}}</span></div>{{/htmlQuote}}{{#posts}}
+                                    <div class="{{#isHeadPost}}head-post{{/isHeadPost}}{{^isHeadPost}}reply-post{{/isHeadPost}}">
+                                        <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%;" class="{{#isNew}}post-dark-text{{/isNew}}{{^isNew}}post-light-text{{/isNew}}">
+                                            <tr>
+                                                <td style="vertical-align: top; width: 44px;">
+                                                    <amp-img src="{{authorPhotoUrl}}" height="32" width="32" alt="Photo de profil de l&#39;utilisateur {{authorName}}" style="border-radius: 50%; display: block;"></amp-img>
+                                                </td>
+                                                <td><strong style="display: inline-block; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: .25px; line-height: 20px; margin: 6px 0 2px 0;">{{authorName}}</strong>{{#isNew}}<span style="background: #1a73e8; border-radius: 8px; color: #fff; display: inline-block; font: 700 12px/16px Roboto, sans-serif; margin-left: 10px; padding: 0 6px;">Nouveau</span>{{/isNew}}
+                                                    <div style="font-size: 14px; font-family: Roboto, sans-serif; font-weight: 400; line-height: 20px; letter-spacing: .2px;">{{#htmlBody}}
+                                                        <div style="margin-top: 6px;" class="notranslate">{{{htmlBody}}}</div>{{/htmlBody}}{{#htmlActionText}}
+                                                        <div style="margin-top: 6px;"><i>{{{htmlActionText}}}</i></div>{{/htmlActionText}}{{#showCopiedText}}
+                                                        <div style="margin-top: 18px; margin-bottom: 18px; height: 1px; background-color: #eee;"></div>
+                                                        <div style="color: #3C4043; font: italic 14px Roboto-Italic, Arial; margin: 18px 0 6px 0; width: 100%;">Les commentaires ci-dessus ont été copiés depuis le document d&#39;origine</div>{{/showCopiedText}}</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>{{/posts}}{{/isDeleted}}{{#isDeleted}}
+                                    <div style="color: #3C4043; font: italic 14px Roboto-Italic, Arial; margin: 18px 0 6px 0; width: 100%;">Le commentaire a été supprimé</div>{{/isDeleted}}{{#canResolve}}
+                                    <form id="resolve-form-{{docoId}}" method="post" action-xhr="https://docs.google.com/document/d/1E-yEXusLm9KoInN2x_-gTrV1hcZYEKM4yjN_uzs1u0s/dynamicmail/resolve?buildLabel=kix_2019.35-Tue_RC01&amp;clientVersion=1&amp;ts=5d70171f" on="submit-success: discussionList.refresh, loadingMessageList.refresh, AMP.setState({scope: {'pendingReply{{docoId}}': false}, pendingReplies: {'{{docoId}}': ''}, cachedReplies: {'{{docoId}}': ''}}); submit: discussion-{{docoId}}.toggleClass('class' = 'resolving-discussion'), AMP.setState({scope: {'replyButton{{docoId}}Disabled': true, 'pendingReply{{docoId}}': true}, cachedReplies: pendingReplies}); submit-error: discussion-{{docoId}}.toggleClass('class' = 'submit-error', force=true), discussion-{{docoId}}.toggleClass('class' = 'resolving-discussion'), AMP.setState({scope: {'replyButton{{docoId}}Disabled': pendingReplies['{{docoId}}'] == null || pendingReplies['{{docoId}}'] == '', 'pendingReply{{docoId}}': false}});">
+                                        <div submit-success template="inline-action-post"></div>
+                                        <input type="hidden" name="replyText" data-amp-bind-value="pendingReplies['{{docoId}}']">
+                                        <input type="hidden" name="commentId" value="{{docoId}}">
+                                        <input type="hidden" name="emailToken" value="AORGpRdz3LO1Smv1Yuh5MoytBP-Z4Nwe_9A80K-3jB-w9dtsvlA1JyiyKdijUXQ1Tfzi1Ny7566n_bvIUt10GaDxK9KPCs7h3iFz9aK-XoXeN1rQF4SXnospTv2t7pSZnDTisJ3_kr6e">
+                                    </form>{{/canResolve}}{{#canReply}}
+                                    <form id="reply-form-{{docoId}}" method="post" autocomplete="off" action-xhr="https://docs.google.com/document/d/1E-yEXusLm9KoInN2x_-gTrV1hcZYEKM4yjN_uzs1u0s/dynamicmail/reply?buildLabel=kix_2019.35-Tue_RC01&amp;clientVersion=1&amp;ts=5d70171f" custom-validation-reporting="as-you-go" on="submit-success: discussionList.refresh, loadingMessageList.refresh, AMP.setState({scope: {'pendingReply{{docoId}}': false}, pendingReplies: {'{{docoId}}': ''}, cachedReplies: {'{{docoId}}': ''}}); submit: reply-form-{{docoId}}-textarea.toggleClass('class' = 'submitting-reply'), AMP.setState({scope: {'replyButton{{docoId}}Disabled': true, 'pendingReply{{docoId}}': true}, cachedReplies: pendingReplies}); submit-error: discussion-{{docoId}}.toggleClass('class' = 'submit-error', force=true), reply-form-{{docoId}}-textarea.toggleClass('class' = 'submitting-reply'), AMP.setState({scope: {'replyButton{{docoId}}Disabled': false, 'pendingReply{{docoId}}': false}}); valid:AMP.setState({scope: {'replyButton{{docoId}}Disabled': false}}); invalid:AMP.setState({scope: {'replyButton{{docoId}}Disabled': true}});">
+                                        <div submit-success template="inline-action-post"></div>
+                                        <div id="reply-form-{{docoId}}-textarea" style="margin-top: 12px; word-break: break-word; word-wrap: break-word;">
+                                            <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%;">
+                                                <tr>
+                                                    <td style="vertical-align: top; width: 44px; padding-top: 10px;">
+                                                        <amp-img src="{{requestor.photoUrl}}" height="32" width="32" alt="Photo de profil de l&#39;utilisateur {{requestor.name}}" style="border-radius: 50%; display: block;"></amp-img>
+                                                    </td>
+                                                    <td>
+                                                        <textarea autoexpand style="background-color: #f8f9fa; border-radius: 4px 4px 0 0; box-sizing: border-box; color: #3C4043; font-family: Roboto, sans-serif; font-size: 14px; height: 52px; outline: none; padding: 17px 10px; resize: none; width: 100%; word-break: break-word; vertical-align: top;" class="reply-input" name="replyText" autocomplete="off" placeholder="Répondre" on="input-debounced: AMP.setState({pendingReplies: {'{{docoId}}': event.value}}); tap:discussionList.changeToLayoutContainer;" data-amp-bind-text="cachedReplies['{{docoId}}'] || ''" data-amp-bind-disabled="scope['pendingReply{{docoId}}']" pattern=".*\S+.*" aria-label="Répondre" required></textarea>
+                                                        <input type="hidden" name="commentId" value="{{docoId}}">
+                                                        <input type="hidden" name="emailToken" value="AORGpRdz3LO1Smv1Yuh5MoytBP-Z4Nwe_9A80K-3jB-w9dtsvlA1JyiyKdijUXQ1Tfzi1Ny7566n_bvIUt10GaDxK9KPCs7h3iFz9aK-XoXeN1rQF4SXnospTv2t7pSZnDTisJ3_kr6e">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </form>{{/canReply}}
+                                    <div style="margin: 10px 0 0 42px; overflow: auto; padding: 2px;">{{#canReply}}
+                                        <input type="submit" style="margin-right: 12px;border: none; display: inline-block; font-size: 14px; font-weight: normal; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; line-height: 36px; min-height: 36px; padding: 0 8px; text-align: center; text-decoration: none; letter-spacing: 0.25px;" role="button" on="tap:reply-form-{{docoId}}.submit()" id="submit-reply-form-{{docoId}}" class="material-button" value="Répondre" title="Répondre au commentaire" disabled data-amp-bind-disabled="scope['replyButton{{docoId}}Disabled']" tabindex="0">{{/canReply}}{{#canResolve}}
+                                        <input type="submit" style="margin-right: 12px;border: none; display: inline-block; font-size: 14px; font-weight: normal; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; line-height: 36px; min-height: 36px; padding: 0 8px; text-align: center; text-decoration: none; letter-spacing: 0.25px;" role="button" on="tap:resolve-form-{{docoId}}.submit()" class="resolve-button material-button" value="{{#isTodo}}Marquer comme terminé{{/isTodo}}{{^isTodo}}Fermer{{/isTodo}}" title="{{#isTodo}}Marquer la tâche comme terminée{{/isTodo}}{{^isTodo}}Marquer comme fermée{{/isTodo}}" data-amp-bind-disabled="scope['pendingReply{{docoId}}']" tabindex="0">{{/canResolve}}<a tabindex="0" role="button" style="border: none; display: inline-block; font-size: 14px; font-weight: normal; font-family: &quot;Google Sans&quot;, Roboto, sans-serif; line-height: 36px; min-height: 36px; padding: 0 8px; text-align: center; text-decoration: none; letter-spacing: 0.25px;" target="_blank" class="material-button discussion-open-button" href="{{discussionLink}}">Ouvrir</a></div>
+                                    <div style="color: #d93025; font: 14px Roboto, sans-serif; height: 36px; line-height: 36px; letter-spacing: 0.25px; margin-left: 36px; padding-left: 8px;" class="reply-error-text">Impossible de distribuer le message</div>
+                                </div>
+                            </div>
+                        </div>
+                        <table style="padding: 14px 10px 0 10px;" role="presentation" dir="ltr">
+                            <tr>
+                                <td style="width: 100%; font-size:12px; font-family: Roboto,Arial,Helvetica,sans-serif; color:white; line-height: 16px; min-height: 40px; letter-spacing: .3px; vertical-align: middle;">
+                                    <p style="color: #5f6368; font: 12px/16px Roboto, sans-serif; letter-spacing: 0.3px; margin: 0; padding: 0;"><span style="padding-right: 5px;">Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA</span>
+                                        <br>
+                                        <br><span style="padding-right: 5px;">Vous avez reçu ce message, car vous participez à ce fil de discussion.</span><span style="padding-right: 5px;"><a href="https://docs.google.com/document/u/112848297301186120621/docos/notify?id=1E-yEXusLm9KoInN2x_-gTrV1hcZYEKM4yjN_uzs1u0s&amp;title=test" target="_blank" style="color: #4285f4; text-decoration: none;">Sélectionnez les types d&#39;e-mails que Google Docs vous envoie.</a></span><span>Pour répondre à la discussion, répondez à cet e-mail.</span></p>
+                                </td>
+                                <td style="padding-left: 20px; vertical-align: middle;">
+                                    <amp-img src="https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_tm_black54_color_96x40dp.png" width="96px" height="40px" style="vertical-align: middle; margin-left: 22px;"></amp-img>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>{{/singleThreadDiscussion}}</template>
+        </amp-list>
+    </div>
+</body>
+
+</html>
