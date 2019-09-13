@@ -6,16 +6,9 @@
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  
   <style amp-custom>
-    /*
-     * todomvc-common/base.css
-     */
-    hr {
-      margin: 20px 0;
-      border: 0;
-      border-top: 1px dashed #c5c5c5;
-      border-bottom: 1px dashed #f7f7f7;
-    }
     /*
      * todomvc.css
      */
@@ -152,6 +145,10 @@
       font-size: 24px;
       border-bottom: 1px solid #ededed;
     }
+    .todo-list .todo-img {
+      padding: 10px 0px 0px 0px;
+      font-size: 2em;
+    }
     .todo-list .todo:last-child {
       border-bottom: none;
     }
@@ -168,15 +165,13 @@
     .todo-list .todo.editing .view {
       display: none;
     }
-    .todo-list .todo .toggle {
-      text-align: center;
- 	  margin: 20px;
-      position: absolute;
+    .todo-list .todo .view {
+        display: flex;
+        align-items: center;
     }
     .todo-list .todo label {
       word-break: break-all;
       padding: 15px 60px 15px 15px;
-      margin-left: 45px;
       display: block;
       line-height: 1.2;
       transition: color 0.4s;
@@ -277,24 +272,26 @@
   </style>
 </head>
 <body>
-
   <div class="container">
     <section class="todoapp">
-        <div><header class="header"><h1>todos</h1><input class="new-todo" placeholder="What needs to be done?" autofocus="true"></header>
+        <div>
+          <header class="header"><h1>todos</h1>
+          <form method="POST" action-xhr="https://todo.patou.dev/api/v1/todos">
+          	<input class="new-todo" placeholder="What needs to be done?" name="title" autofocus="true">
+          </form>
+          </header>
       <section class="main">
           <label for="toggle-all"></label>
-          <div class="todo-list">
+          <ul class="todo-list">
             <amp-list
               width="auto"
-              height="300"
+              height="600"
               layout="fixed-height"
               items="."
               src="https://todo.patou.dev/api/v1/todos">
               <template type="amp-mustache">
-            <div
-             
-              class="todo"
-              
+            <li
+              class="todo{{#completed}} completed{{/completed}}"
             >
               <div class="view">
                 {{^completed}}
@@ -302,14 +299,16 @@
                 width="40"
                 height="40"
                 alt="Check"
-                noloading></amp-img>
-                {{/completed}}
-                {{#completed}}
+                noloading>
+                  <div fallback class="todo-img">☐</div>
+                </amp-img>{{/completed}}{{#completed}}
                 <amp-img src="https://todo.patou.dev/img/checked.svg"
                 width="40"
                 height="40"
                 alt="Checked"
-                noloading></amp-img>
+                noloading>
+                  <div fallback class="todo-img">☑</div>
+                </amp-img>
                 {{/completed}}
                 <label>{{title}}</label>
                 <button class="destroy"></button>
@@ -318,10 +317,10 @@
                 class="edit"
                 type="text"
               >
-            </div>
+            </li>
               </template>
            </amp-list>
-          </div>
+          </ul>
         </section>
       </div>
     
